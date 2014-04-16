@@ -50,11 +50,12 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.  */
 #define _longjmp __nonworking__longjmp
 #define longjmp __nonworking_longjmp
 static void _longjmp (jmp_buf env, int val);
-static void longjmp (jmp_buf env, int val);
+static void __attribute__((unused)) longjmp (jmp_buf env, int val);
 #endif
 #endif /* __GLIBC__ */
 
 void
+__attribute__((unused))
 _longjmp (jmp_buf env, int val)
 {
   extern int _UI_longjmp_cont;
