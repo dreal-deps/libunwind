@@ -306,6 +306,13 @@ else
     LDFLAGS_NOSTARTFILES="-XCClinker -nostartfiles"
 fi
 
+if [[[ $CXX == *clang* ]]]
+then
+   echo CLANG DETECTED
+   LDFLAGS="$LDFLAGS -Qunused-arguments"
+   CFLAGS="$CFLAGS -Qunused-arguments"
+fi
+
 if test x$GCC = xyes -a x$intel_compiler != xyes -a x$qcc_compiler != xyes; then
   LIBCRTS="-lgcc"
 fi
